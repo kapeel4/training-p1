@@ -3,7 +3,8 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\WelcomeController;
-use App\Http\Controllers\AbcController;
+use App\Http\Controllers\AboutController;
+use App\Http\Controllers\GalleryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,19 +21,13 @@ use App\Http\Controllers\AbcController;
 //     return view('welcome');
 // });
 
-Route::get('/', [AbcController::class, 'index'])->name('index');
-Route::get('/create',[AbcController::class,'create'])->name('create');
-Route::post('/store',[AbcController::class,'store'])->name('store');
+Route::get('/', [WelcomeController::class, 'index'])->name('index');
 
-Route::get('/about', function () {
-    return view('about');
-});
-Route::get('/about-us', function () {
-    return view('welcome');
-});
-Route::get('/document/act', function () {
-    return view('act');
-});
+
+Route::get('/about', [AboutController::class, 'index'])->name('about.index');
+
+
+Route::get('/gallery', [GalleryController::class, 'index'])->name('gallery.index');
 
 
 

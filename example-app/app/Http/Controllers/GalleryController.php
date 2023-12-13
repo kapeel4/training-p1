@@ -4,16 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class ProductCntroller extends Controller
+class GalleryController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
-
-
+        // dd("here");
+        return view('gallery-index');
     }
 
     /**
@@ -43,7 +42,18 @@ class ProductCntroller extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    
+    public function edit(string $id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, string $id)
+    {
+        //
+    }
 
     /**
      * Remove the specified resource from storage.
@@ -51,9 +61,5 @@ class ProductCntroller extends Controller
     public function destroy(string $id)
     {
         //
-    }
-
-    public function showBox(){
-
     }
 }

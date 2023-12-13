@@ -4,14 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class NoticeController extends Controller
+class AboutController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        // dd("i am here");
+        return view('about-index');
     }
 
     /**

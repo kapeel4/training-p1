@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\GalleryController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +30,11 @@ Route::get('/about', [AboutController::class, 'index'])->name('about.index');
 
 Route::get('/gallery', [GalleryController::class, 'index'])->name('gallery.index');
 
+Route::get('/about/{id}', [AboutController::class, 'show'])->name('about.show');
+
+
+// product routes
+Route::get('/product', [ProductController::class, 'index'])->name('product.index');
 
 
 

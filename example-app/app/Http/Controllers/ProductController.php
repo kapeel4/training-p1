@@ -3,16 +3,24 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Product;
+use App\Models\User;
 
-class AboutController extends Controller
+class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        // dd("i am here");
-        return view('about-index');
+        $products = Product::orderBy('id','DESC')->get();
+        // SELECT
+        //   *
+        // FROM
+        //   `products`
+        // ORDER BY
+        //   `ids` DESC
+        return view('product-index', compact('products'));
     }
 
     /**
@@ -36,7 +44,7 @@ class AboutController extends Controller
      */
     public function show(string $id)
     {
-        dd($id);
+        //
     }
 
     /**

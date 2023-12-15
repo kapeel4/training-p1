@@ -16,6 +16,7 @@
 			<ul class="nav navbar-nav">
 				<li><a href="{{route('about.index')}}">About <span class="sr-only">(current)</span></a></li>
 				<li><a href="{{route('gallery.index')}}">Gallery</a></li>
+				<li><a href="{{route('product.index')}}">Product</a></li>
 			</ul>
 		</div><!-- /.navbar-collapse -->
 	</div><!-- /.container-fluid -->

@@ -13,14 +13,14 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::orderBy('id','DESC')->get();
+        $wwww = Product::orderBy('id','DESC')->get();
         // SELECT
         //   *
         // FROM
         //   `products`
         // ORDER BY
         //   `ids` DESC
-        return view('product-index', compact('products'));
+        return view('product-index', compact('wwww'));
     }
 
     /**
@@ -28,7 +28,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        // dd("here");
+        return view('product-create');
     }
 
     /**
@@ -36,7 +37,16 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request['name']);
+        $product = new Product();
+        $product->name = $request['name'];
+        $product->subname = $request['subname'];
+        $product->address = $request['address'];
+        $success = $product->save();
+        if($success){
+            return redirect()->route('product.index');
+        }
+
     }
 
     /**

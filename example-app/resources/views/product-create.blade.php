@@ -14,29 +14,23 @@
 	@include('layouts.navbar')
 	<div class="col-md-10">
 		<h1>Product<a href="{{route('product.create')}}">Create New Product</a></h1>
-		<table class="table">
-      <caption>Optional product.</caption>
-      <thead>
-        <tr>
-          <th>SN</th>
-          <th>Name</th>
-          <th>Sub Name</th>
-          <th>Address</th>
-          <th>Created At</th>
-        </tr>
-      </thead>
-      <tbody>
-      	@foreach($wwww as $qqq)
-        <tr>
-          <th scope="row">{{$qqq->id}}</th>
-          <td>{{$qqq->name}}</td>
-          <td>{{$qqq->subname}}</td>
-          <td>{{$qqq->address}}</td>
-          <td>{{$qqq->created_at}}</td>
-        </tr>
-        @endforeach
-      </tbody>
-    </table>
+		<form method="POST" action="{{route('product.store')}}">
+      @csrf()
+ <div class="form-group">
+    <label for="name">Name:</label>
+    <input type="text" class="form-control" name="name" id="name" placeholder="Enter name">
+ </div>
+ <div class="form-group">
+    <label for="subname">Subname:</label>
+    <input type="text" class="form-control" name="subname" id="subname" placeholder="Enter subname">
+ </div>
+ <div class="form-group">
+    <label for="address">Address:</label>
+    <input type="text" class="form-control" name="address" id="address" placeholder="Enter address">
+ </div>
+ 
+ <button type="submit" class="btn btn-primary">Submit</button>
+</form>
 	</div>
 </div>
 

@@ -14,12 +14,6 @@ class ProductController extends Controller
     public function index()
     {
         $wwww = Product::orderBy('id','DESC')->get();
-        // SELECT
-        //   *
-        // FROM
-        //   `products`
-        // ORDER BY
-        //   `ids` DESC
         return view('product-index', compact('wwww'));
     }
 
@@ -54,7 +48,10 @@ class ProductController extends Controller
      */
     public function show(string $id)
     {
-        //
+        // dd($id);
+        $products = Product::orderBy('id','DESC')->where('id',$id)->get();
+        return view('product-show', compact('products'));
+
     }
 
     /**
@@ -62,7 +59,8 @@ class ProductController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $products = Product::orderBy('id','DESC')->where('id',$id)->get();
+        return view('product-edit', compact('products'));
     }
 
     /**
@@ -70,7 +68,15 @@ class ProductController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        // dd($id);
+        $product = Product::find($id);
+        $product->name = $request['name'];
+        $product->subname = $request['subname'];
+        $product->address = $request['address'];
+        $success = $product->save();
+        if($success){
+            return redirect()->route('product.index');
+        }
     }
 
     /**
@@ -78,6 +84,11 @@ class ProductController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        // dd($id);
+        $product = Product::find($id);
+        $success = $product->delete();
+        if($success){
+            return redirect()->route('product.index');
+        }
     }
 }

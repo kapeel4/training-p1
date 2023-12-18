@@ -14,32 +14,22 @@
 	@include('layouts.navbar')
 	<div class="col-md-10">
 		<h1>Product<a href="{{route('product.create')}}">Create New Product</a></h1>
-		<form method="POST" action="{{route('product.store')}}">
-      @csrf()
+		@foreach($products as $product)
+		<form>
  <div class="form-group">
     <label for="name">Name:</label>
-    <input type="text" class="form-control" name="name" id="name" placeholder="Enter name">
+    <input type="text" class="form-control" name="name" id="name" placeholder="Enter name" value="{{$product->name}}" readonly="true">
  </div>
  <div class="form-group">
     <label for="subname">Subname:</label>
-    <input type="text" class="form-control" name="subname" id="subname" placeholder="Enter subname">
+    <input type="text" class="form-control" name="subname" id="subname" placeholder="Enter subname" value="{{$product->subname}}" readonly="true">
  </div>
  <div class="form-group">
     <label for="address">Address:</label>
-    <input type="text" class="form-control" name="address" id="address" placeholder="Enter address">
+    <input type="text" class="form-control" name="address" id="address" placeholder="Enter address" value="{{$product->address}}" readonly="true">
  </div>
- <div class="form-group">
-    <label for="address">Category:</label>
-    <select class="form-control" name="category">
-    	<option>--Please choose one--</option>
-    	@foreach($categories as $category)
-    	<option value="{{$category->title}}">{{$category->title}}</option>
-    	@endforeach
-    </select>
- </div>
- 
- <button type="submit" class="btn btn-primary">Submit</button>
 </form>
+@endforeach
 	</div>
 </div>
 

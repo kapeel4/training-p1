@@ -12,9 +12,40 @@
 
 <div class="container">
 	@include('layouts.navbar')
-	<div class="col-md-10">
-		<h1>Product<a href="{{route('product.create')}}" class="btn btn-primary">New</a></h1>
+	<div class="col-md-6">
+		<h1>Category<a href="{{route('category.create')}}" class="btn btn-primary">New</a></h1>
 		<table class="table">
+      <caption>Optional product.</caption>
+      <thead>
+        <tr>
+          <th>SN</th>
+          <th>Title</th>
+          <th>Created At</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- array aauchha data -->
+      	@foreach($categories as $category)
+        <tr>
+          <th scope="row">{{$category->id}}</th>
+          <td>{{$category->title}}</td>
+          <td>{{$category->created_at}}</td>
+          <td>
+            <a href="{{route('category.show',$category->id)}}">View</a>
+            |
+            <a href="{{route('category.edit',$category->id)}}">Edit</a>
+            |
+            <a href="{{route('category.destroy',$category->id)}}">Delete</a>
+          </td>
+        </tr>
+        @endforeach
+      </tbody>
+    </table>
+	</div>
+  <div class="col-md-6">
+    <h1>Product<a href="{{route('product.create')}}" class="btn btn-primary">New</a></h1>
+    <table class="table">
       <caption>Optional product.</caption>
       <thead>
         <tr>
@@ -28,7 +59,7 @@
       </thead>
       <tbody>
         <!-- array aauchha data -->
-      	@foreach($wwww as $qqq)
+        @foreach($products as $qqq)
         <tr>
           <th scope="row">{{$qqq->id}}</th>
           <td>{{$qqq->name}}</td>
@@ -46,7 +77,7 @@
         @endforeach
       </tbody>
     </table>
-	</div>
+  </div>
 </div>
 
 

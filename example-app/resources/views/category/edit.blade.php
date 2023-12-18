@@ -13,31 +13,17 @@
 <div class="container">
 	@include('layouts.navbar')
 	<div class="col-md-10">
-		<h1>Product<a href="{{route('product.create')}}">Create New Product</a></h1>
-		<form method="POST" action="{{route('product.store')}}">
+		<h1>Category<a href="{{route('category.create')}}">Create New Category</a></h1>
+		<form method="POST" action="{{route('category.update', $category->id)}}">
       @csrf()
  <div class="form-group">
-    <label for="name">Name:</label>
-    <input type="text" class="form-control" name="name" id="name" placeholder="Enter name">
+    <label for="title">Title:</label>
+    <input type="text" class="form-control" name="title" id="title" placeholder="Enter title" value="{{$category->title}}">
  </div>
  <div class="form-group">
-    <label for="subname">Subname:</label>
-    <input type="text" class="form-control" name="subname" id="subname" placeholder="Enter subname">
+    <label for="price">Prices:</label>
+    <input type="text" class="form-control" name="price" id="price" placeholder="Enter price" value="{{$category->price}}">
  </div>
- <div class="form-group">
-    <label for="address">Address:</label>
-    <input type="text" class="form-control" name="address" id="address" placeholder="Enter address">
- </div>
- <div class="form-group">
-    <label for="address">Category:</label>
-    <select class="form-control" name="category">
-    	<option>--Please choose one--</option>
-    	@foreach($categories as $category)
-    	<option value="{{$category->title}}">{{$category->title}}</option>
-    	@endforeach
-    </select>
- </div>
- 
  <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 	</div>

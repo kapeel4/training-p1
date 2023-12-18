@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\Category;
 use App\Models\User;
 
 class ProductController extends Controller
@@ -22,8 +23,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        // dd("here");
-        return view('product-create');
+        $categories = Category::get();
+        return view('product-create', compact('categories'));
     }
 
     /**
@@ -36,6 +37,7 @@ class ProductController extends Controller
         $product->name = $request['name'];
         $product->subname = $request['subname'];
         $product->address = $request['address'];
+        $product->category = $request['category'];
         $success = $product->save();
         if($success){
             return redirect()->route('product.index');
@@ -60,7 +62,8 @@ class ProductController extends Controller
     public function edit(string $id)
     {
         $products = Product::orderBy('id','DESC')->where('id',$id)->get();
-        return view('product-edit', compact('products'));
+        $categories = Category::get();
+        return view('product-edit', compact('products','categories'));
     }
 
     /**

@@ -53,7 +53,7 @@
 		<img src="image/test.png" alt="SEO" class="img-thumbnail">
 	</div>
 </div>
-
+@include('layouts.footer')
 
 </body>
 </html>

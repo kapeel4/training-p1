@@ -31,12 +31,24 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+        ]);
         // dd($request->all());
+        $imageName = time().'.'.$request->image->extension();  
+        $request->image->move(public_path('image'), $imageName);
+
         $category = new Category();
         $category->title = $request['title'];
         $category->price = $request['price'];
-        $category->save();
-        return redirect()->route('category.index');
+        $category->image = $imageName;
+        $success = $category->save();
+        if($success){
+            return redirect()->route('category.index')->with('success','You have successfully upload image.');
+        }
+        else{
+           return redirect()->route('category.index')->with('error','Sorry');
+        }
     }
 
     /**

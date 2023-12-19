@@ -16,11 +16,30 @@
 		<h1>Category<a href="{{route('category.create')}}" class="btn btn-primary">New</a></h1>
 		<table class="table">
       <caption>Optional product.</caption>
+      @if ($message = Session::get('success'))
+        <div class="alert alert-success alert-block">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+                <strong>{{ $message }}</strong>
+        </div>
+        <img src="images/{{ Session::get('image') }}">
+        @endif
+    
+        @if (count($errors) > 0)
+            <div class="alert alert-danger">
+                <strong>Whoops!</strong> There were some problems with your input.
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
       <thead>
         <tr>
           <th>SN</th>
           <th>Title</th>
           <th>Created At</th>
+          <th>Image</th>
           <th>Action</th>
         </tr>
       </thead>
@@ -31,6 +50,7 @@
           <th scope="row">{{$category->id}}</th>
           <td>{{$category->title}}</td>
           <td>{{$category->created_at}}</td>
+          <td><img src="{{asset('image/'.$category->image)}}" class="img-responsive"></td>
           <td>
             <a href="{{route('category.show',$category->id)}}">View</a>
             |

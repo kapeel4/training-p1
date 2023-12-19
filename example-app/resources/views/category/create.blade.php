@@ -14,7 +14,25 @@
 	@include('layouts.navbar')
 	<div class="col-md-10">
 		<h1>Category<a href="{{route('category.create')}}">Create New Category</a></h1>
-		<form method="POST" action="{{route('category.store')}}">
+		@if ($message = Session::get('success'))
+        <div class="alert alert-success alert-block">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+                <strong>{{ $message }}</strong>
+        </div>
+        <img src="images/{{ Session::get('image') }}">
+        @endif
+    
+        @if (count($errors) > 0)
+            <div class="alert alert-danger">
+                <strong>Whoops!</strong> There were some problems with your input.
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+		<form method="POST" action="{{route('category.store')}}" enctype="multipart/form-data">
       @csrf()
  <div class="form-group">
     <label for="title">Title:</label>
@@ -23,6 +41,10 @@
  <div class="form-group">
     <label for="price">Prices:</label>
     <input type="text" class="form-control" name="price" id="price" placeholder="Enter price">
+ </div>
+ <div class="form-group">
+    <label for="image">Image:</label>
+    <input type="file" class="form-control" name="image" id="image" placeholder="Enter image">
  </div>
  <button type="submit" class="btn btn-primary">Submit</button>
 </form>

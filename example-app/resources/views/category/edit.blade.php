@@ -15,6 +15,7 @@
 	<div class="col-md-10">
 		<h1>Category<a href="{{route('category.create')}}">Create New Category</a></h1>
 		<form method="POST" action="{{route('category.update', $category->id)}}">
+			<!-- csrf bhaneko token ho -->
       @csrf()
  <div class="form-group">
     <label for="title">Title:</label>

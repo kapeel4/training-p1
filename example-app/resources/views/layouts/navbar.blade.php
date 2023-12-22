@@ -18,6 +18,7 @@
 				<li><a href="{{route('gallery.index')}}">Gallery</a></li>
 				<li><a href="{{route('product.index')}}">Product</a></li>
 				<li><a href="{{route('category.index')}}">Category</a></li>
+				<li><a href="{{route('contact.index')}}">Contact</a></li>
 			</ul>
 		</div><!-- /.navbar-collapse -->
 	</div><!-- /.container-fluid -->

@@ -7,6 +7,7 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ContactController;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,6 +52,11 @@ Route::get('/category/show/{id}', [CategoryController::class, 'show'])->name('ca
 Route::get('/category/edit/{id}', [CategoryController::class, 'edit'])->name('category.edit');
 Route::post('/category/update/{id}', [CategoryController::class, 'update'])->name('category.update');
 Route::get('/category/destroy/{id}', [CategoryController::class, 'destroy'])->name('category.destroy');
+
+// other function made by me
+Route::get('/category/other', [CategoryController::class, 'other'])->name('category.other');
+
+Route::get('contact',[ContactController::class,'index'])->name('contact.index');
 
 
 

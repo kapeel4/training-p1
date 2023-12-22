@@ -56,6 +56,7 @@ class CategoryController extends Controller
      */
     public function show(string $id)
     {
+        // dd($id);
         $category = Category::find($id);
         return view('category.show', compact(['category']));
     }
@@ -91,5 +92,9 @@ class CategoryController extends Controller
         if($success){
             return redirect()->route('category.index');
         }
+    }
+
+    public function other(){
+        return view('category.other');
     }
 }

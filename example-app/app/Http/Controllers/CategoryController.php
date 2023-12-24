@@ -87,8 +87,15 @@ class CategoryController extends Controller
      */
     public function destroy(string $id)
     {
+        // dd($id);
         $category = Category::find($id);
         $success = $category->delete();
+        // if ($success) {
+        //     return response()->json(['success' => true, 'message' => 'Result deleted.']);
+        // }
+        // else{
+        //     return response()->json(['success' => fase, 'message' => 'Something went wrong']);
+        // }
         if($success){
             return redirect()->route('category.index');
         }

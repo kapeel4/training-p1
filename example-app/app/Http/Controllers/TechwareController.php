@@ -2,16 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Techware;
 use Illuminate\Http\Request;
+use App\Models\Category;
 
-class WelcomeController extends Controller
+class TechwareController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('welcome');
+        // dd("1");
+        $categories = Category::get();
+        // dd($categories);
+        // var_dump('expression');
+        // print_r('expression');
+        return view('techware.index', compact('categories'));
     }
 
     /**
@@ -33,7 +40,7 @@ class WelcomeController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Techware $techware)
     {
         //
     }
@@ -41,7 +48,7 @@ class WelcomeController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Techware $techware)
     {
         //
     }
@@ -49,7 +56,7 @@ class WelcomeController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Techware $techware)
     {
         //
     }
@@ -57,8 +64,12 @@ class WelcomeController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Techware $techware)
     {
         //
+    }
+
+    public function link(){
+        return view('link.index');
     }
 }

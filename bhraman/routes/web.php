@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\HomeController;
+use App\Http\Controllers\Backend\HeaderController;
+use App\Http\Controllers\Backend\EmployeeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,3 +28,12 @@ Auth::routes();
 
 // this is for admin
 Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+// for header
+Route::get('/home/header/index',[HeaderController::class,'index'])->name('header.index');
+Route::get('/home/header/create',[HeaderController::class,'create'])->name('header.create');
+Route::post('/home/header/store',[HeaderController::class,'store'])->name('header.store');
+
+
+// for employee
+Route::get('/home/employee/index',[EmployeeController::class,'index'])->name('employee.index');

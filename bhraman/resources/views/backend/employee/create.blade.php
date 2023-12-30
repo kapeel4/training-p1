@@ -5,7 +5,7 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1 class="m-0">Header Create</h1>
+                <h1 class="m-0">Employee Create</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
@@ -21,48 +21,48 @@
         <div class="row">
             <div class="col-md-8">
                 @if ($errors->any())
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                 <div class="card card-primary">
                     <div class="card-header">
                         <h3 class="card-title">Create</h3>
                     </div>
-                    <form method="POST" action="{{route('header.store')}}">
+                    <form method="POST" action="{{route('employee.store')}}">
                         @csrf()
                         <div class="card-body">
 
-                            <label for="govt_level">Governemnt Level</label>
+                            <label for="sanket_no">Sanket No</label>
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="input-group">
-                                        <input type="text" class="form-control" name="govt_level" placeholder="Enter Governemnt Level En">
+                                        <input type="text" class="form-control" name="sanket_no" placeholder="Enter Sanket No En">
                                     </div>
 
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="input-group">
-                                        <input type="text" class="form-control" name="govt_level_np" placeholder="Enter Governemnt Level np">
+                                        <input type="text" class="form-control" name="sanket_no_np" placeholder="Enter Sanket No np">
                                     </div>
 
                                 </div>
                             </div>
-                            <label for="ministry_name">Ministry Name</label>
+                            <label for="name">Employe Name</label>
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="input-group">
-                                        <input type="text" class="form-control" name="ministry_name" placeholder="Enter Ministry Name En">
+                                        <input type="text" class="form-control" name="name" placeholder="Enter Employe Name En">
                                     </div>
 
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="input-group">
-                                        <input type="text" class="form-control" name="ministry_name_np" placeholder="Enter Ministry Name np">
+                                        <input type="text" class="form-control" name="name_np" placeholder="Enter Employe Name np">
                                     </div>
 
                                 </div>
@@ -82,34 +82,47 @@
 
                                 </div>
                             </div>
-                            <label for="province_name">Province Name</label>
+                            <label for="contact_no">Contact No</label>
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="input-group">
-                                        <input type="text" class="form-control" name="province_name" placeholder="Enter Province Name En">
+                                        <input type="text" class="form-control" name="contact_no" placeholder="Enter Contact No En">
                                     </div>
 
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="input-group">
-                                        <input type="text" class="form-control" name="province_name_np" placeholder="Enter Province Name np">
+                                        <input type="text" class="form-control" name="contact_no_np" placeholder="Enter Contact No np">
                                     </div>
 
                                 </div>
                             </div>
-                            <label for="office_code">Office Code</label>
+                            <label for="emp_post">Employee Post</label>
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="input-group">
-                                        <input type="number" class="form-control" name="office_code" placeholder="Enter Office Code En">
+                                        <input type="text" class="form-control" name="emp_post" placeholder="Enter Employee Post En">
                                     </div>
 
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="input-group">
-                                        <input type="number" class="form-control" name="office_code_np" placeholder="Enter Office Code np">
+                                        <input type="text" class="form-control" name="emp_post_np" placeholder="Enter Employee Post np">
                                     </div>
 
+                                </div>
+                            </div>
+                            <label for="type">Type</label>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="input-group">
+                                        <select class="form-control" name="type">
+                                            <option value="">--Please choose one--</option>
+                                            <option value="1">Employee</option>
+                                            <option value="2">Recommend</option>
+                                            <option value="3">Approve</option>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
                         </div>

@@ -40,15 +40,17 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach($headers as $header)
                                 <tr>
-                                    <td>1.</td>
-                                    <td>Update software</td>
-                                    <td>Update software</td>
-                                    <td>adsfa</td>
-                                    <td>adsfa</td>
-                                    <td>adsfa</td>
-                                    <td><span class="badge bg-danger">55%</span></td>
+                                    <td>{{$loop->iteration}}</td>
+                                    <td>{{$header->govt_level}} <span class="text-info">{{$header->govt_level_np}}</span></td>
+                                    <td>{{$header->ministry_name}} | {{$header->ministry_name_np}}</td>
+                                    <td>{{$header->office_name}} | {{$header->office_name_np}}</td>
+                                    <td>{{$header->govt_level}} | {{$header->govt_level_np}}</td>
+                                    <td>{{$header->office_code}} | {{$header->office_code_np}}</td>
+                                    <td><span class="badge bg-info"><a href="{{route('header.edit',$header->id)}}">Edit</a></span> <span class="badge bg-danger"><a href="{{route('header.destroy',$header->id)}}">Delete</a></span></td>
                                 </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

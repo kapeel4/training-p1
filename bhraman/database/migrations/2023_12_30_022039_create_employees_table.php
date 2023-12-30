@@ -11,18 +11,19 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('headers', function (Blueprint $table) {
+        Schema::create('employees', function (Blueprint $table) {
             $table->id();
-            $table->string('govt_level');
-            $table->string('ministry_name')->nullable();
+            $table->string('sanket_no');
+            $table->string('name');
             $table->string('office_name');
-            $table->string('province_name');
-            $table->bigInteger('office_code');
-            $table->string('govt_level_np');
-            $table->string('ministry_name_np')->nullable();
+            $table->string('contact_no');
+            $table->string('emp_post');
+            $table->string('type'); // 1 employee 2 recomend 3 approve
+            $table->string('sanket_no_np');
+            $table->string('name_np');
             $table->string('office_name_np');
-            $table->string('province_name_np');
-            $table->bigInteger('office_code_np');
+            $table->string('contact_no_np');
+            $table->string('emp_post_np');
             $table->timestamps();
         });
     }
@@ -32,6 +33,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('headers');
+        Schema::dropIfExists('employees');
     }
 };

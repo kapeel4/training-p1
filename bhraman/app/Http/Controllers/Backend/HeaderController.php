@@ -13,7 +13,8 @@ class HeaderController extends Controller
      */
     public function index()
     {
-        return view('backend.header.index');
+        $headers = Header::get();
+        return view('backend.header.index', compact('headers'));
     }
 
     /**
@@ -29,8 +30,13 @@ class HeaderController extends Controller
      */
     public function store(Request $request)
     {
-        // $data = $request->all();
-        // Header::create($data);
+        $validated = $request->validate([
+            'govt_level' => 'required',
+            'ministry_name' => 'required',
+            'office_name' => 'required',
+            'province_name' => 'required|max:20',
+            'office_code' => 'required|unique:headers|max:10',
+        ]);
 
         $header = new Header();
         $header->govt_level = request('govt_level');
@@ -38,6 +44,11 @@ class HeaderController extends Controller
         $header->office_name= request('office_name');
         $header->province_name= request('province_name');
         $header->office_code= request('office_code');
+        $header->govt_level_np = request('govt_level_np');
+        $header->ministry_name_np= request('ministry_name_np');
+        $header->office_name_np= request('office_name_np');
+        $header->province_name_np= request('province_name_np');
+        $header->office_code_np= request('office_code_np');
         $header->save();
         return redirect()->route('header.index');
     }
@@ -55,7 +66,8 @@ class HeaderController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $headers = Header::find($id);
+        return view('backend.header.edit', compact('headers'));
     }
 
     /**
@@ -63,7 +75,19 @@ class HeaderController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $header = Header::find($id);
+        $header->govt_level = request('govt_level');
+        $header->ministry_name= request('ministry_name');
+        $header->office_name= request('office_name');
+        $header->province_name= request('province_name');
+        $header->office_code= request('office_code');
+        $header->govt_level_np = request('govt_level_np');
+        $header->ministry_name_np= request('ministry_name_np');
+        $header->office_name_np= request('office_name_np');
+        $header->province_name_np= request('province_name_np');
+        $header->office_code_np= request('office_code_np');
+        $header->save();
+        return redirect()->route('header.index');
     }
 
     /**
@@ -71,6 +95,8 @@ class HeaderController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $header = Header::find($id);
+        $header->delete();
+        return redirect()->route('header.index');
     }
 }

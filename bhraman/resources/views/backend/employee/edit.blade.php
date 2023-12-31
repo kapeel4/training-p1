@@ -5,7 +5,7 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1 class="m-0">Employee Create</h1>
+                <h1 class="m-0">Employee Update</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
@@ -31,22 +31,22 @@
                     @endif
                 <div class="card card-primary">
                     <div class="card-header">
-                        <h3 class="card-title">Create</h3>
+                        <h3 class="card-title">Update</h3>
                     </div>
-                    <form method="POST" action="{{route('employee.store')}}">
+                    <form method="POST" action="{{route('employee.update',$employees->id)}}">
                         @csrf()
                         <div class="card-body">
                             <label for="sanket_no">Sanket No</label>
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="input-group">
-                                        <input type="text" class="form-control" name="sanket_no" placeholder="Enter Sanket No En">
+                                        <input type="text" class="form-control" value="{{$employees->sanket_no}}" name="sanket_no" placeholder="Enter Sanket No En">
                                     </div>
 
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="input-group">
-                                        <input type="text" class="form-control" name="sanket_no_np" placeholder="Enter Sanket No np">
+                                        <input type="text" class="form-control" value="{{$employees->sanket_no_np}}" name="sanket_no_np" placeholder="Enter Sanket No np">
                                     </div>
 
                                 </div>
@@ -55,13 +55,13 @@
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="input-group">
-                                        <input type="text" class="form-control" name="name" placeholder="Enter Employe Name En">
+                                        <input type="text" class="form-control" value="{{$employees->name}}" name="name" placeholder="Enter Employe Name En">
                                     </div>
 
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="input-group">
-                                        <input type="text" class="form-control" name="name_np" placeholder="Enter Employe Name np">
+                                        <input type="text" class="form-control" value="{{$employees->name_np}}" name="name_np" placeholder="Enter Employe Name np">
                                     </div>
 
                                 </div>
@@ -70,13 +70,13 @@
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="input-group">
-                                        <input type="text" class="form-control" name="office_name" placeholder="Enter Office Name En">
+                                        <input type="text" class="form-control" value="{{$employees->office_name}}" name="office_name" placeholder="Enter Office Name En">
                                     </div>
 
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="input-group">
-                                        <input type="text" class="form-control" name="office_name_np" placeholder="Enter Office Name np">
+                                        <input type="text" class="form-control" value="{{$employees->office_name_np}}" name="office_name_np" placeholder="Enter Office Name np">
                                     </div>
 
                                 </div>
@@ -85,13 +85,13 @@
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="input-group">
-                                        <input type="text" class="form-control" name="contact_no" placeholder="Enter Contact No En">
+                                        <input type="text" class="form-control" value="{{$employees->contact_no}}" name="contact_no" placeholder="Enter Contact No En">
                                     </div>
 
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="input-group">
-                                        <input type="text" class="form-control" name="contact_no_np" placeholder="Enter Contact No np">
+                                        <input type="text" class="form-control" value="{{$employees->contact_no_np}}" name="contact_no_np" placeholder="Enter Contact No np">
                                     </div>
 
                                 </div>
@@ -100,13 +100,13 @@
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="input-group">
-                                        <input type="text" class="form-control" name="emp_post" placeholder="Enter Employee Post En">
+                                        <input type="text" class="form-control" value="{{$employees->emp_post}}" name="emp_post" placeholder="Enter Employee Post En">
                                     </div>
 
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="input-group">
-                                        <input type="text" class="form-control" name="emp_post_np" placeholder="Enter Employee Post np">
+                                        <input type="text" class="form-control" value="{{$employees->emp_post_np}}" name="emp_post_np" placeholder="Enter Employee Post np">
                                     </div>
 
                                 </div>
@@ -115,11 +115,11 @@
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="input-group">
-                                        <select class="form-control" name="type">
+                                        <select class="form-control" value="{{$employees->type}}" name="type">
                                             <option value="">--Please choose one--</option>
-                                            <option value="1">Employee</option>
-                                            <option value="2">Recommend</option>
-                                            <option value="3">Approve</option>
+                                            <option value="1" {{ $employees->type == 1 ? 'selected' : '' }}>Employee</option>
+                                            <option value="2" {{ $employees->type == 2 ? 'selected' : '' }}>Recommend</option>
+                                            <option value="3" {{ $employees->type == 3 ? 'selected' : '' }}>Approve</option>
                                         </select>
                                     </div>
                                 </div>
@@ -127,7 +127,7 @@
                         </div>
 
                         <div class="card-footer">
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" class="btn btn-primary">Update</button>
                         </div>
                     </form>
                 </div>

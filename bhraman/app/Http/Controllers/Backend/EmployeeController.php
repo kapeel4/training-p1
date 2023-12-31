@@ -67,7 +67,9 @@ class EmployeeController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $employees = Employee::find($id);
+        // dd($employees);
+        return view('backend.employee.edit', compact('employees'));
     }
 
     /**
@@ -75,7 +77,29 @@ class EmployeeController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        // dd($request->all());
+        $validated = $request->validate([
+            'sanket_no' => 'required|unique:employees|max:10',
+            'name' => 'required',
+            'office_name' => 'required',
+            'contact_no' => 'required|max:20',
+            'emp_post' => 'required',
+            'type' => 'required',
+        ]);
+        $employee = Employee::find($id);
+        $employee->sanket_no = request('sanket_no');
+        $employee->name= request('name');
+        $employee->office_name= request('office_name');
+        $employee->contact_no= request('contact_no');
+        $employee->emp_post= request('emp_post');
+        $employee->sanket_no_np = request('sanket_no_np');
+        $employee->name_np= request('name_np');
+        $employee->office_name_np= request('office_name_np');
+        $employee->contact_no_np= request('contact_no_np');
+        $employee->emp_post_np= request('emp_post_np');
+        $employee->type= request('type');
+        $employee->save();
+        return redirect()->route('employee.index');
     }
 
     /**
@@ -83,6 +107,8 @@ class EmployeeController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $employee = Employee::find($id);
+        $employee->delete();
+        return redirect()->route('employee.index');
     }
 }

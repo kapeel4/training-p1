@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\HomeController;
 use App\Http\Controllers\Backend\HeaderController;
 use App\Http\Controllers\Backend\EmployeeController;
+use App\Http\Controllers\Backend\Bhraman_detailController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,8 +38,23 @@ Route::get('/home/header/{id}/edit',[HeaderController::class,'edit'])->name('hea
 Route::post('/home/header/{id}/update',[HeaderController::class,'update'])->name('header.update');
 Route::get('/home/header/{id}/destroy',[HeaderController::class,'destroy'])->name('header.destroy');
 
-
 // for employee
 Route::get('/home/employee',[EmployeeController::class,'index'])->name('employee.index');
 Route::get('/home/employee/create',[EmployeeController::class,'create'])->name('employee.create');
 Route::post('/home/employee/store',[EmployeeController::class,'store'])->name('employee.store');
+Route::get('/home/employee/{id}/edit',[EmployeeController::class,'edit'])->name('employee.edit');
+Route::post('/home/employee/{id}/update',[EmployeeController::class,'update'])->name('employee.update');
+Route::get('/home/employee/{id}/destroy',[EmployeeController::class,'destroy'])->name('employee.destroy');
+
+
+//for bharaman detail
+Route::get('/home/bharama',[Bhraman_detailController::class,'index'])->name('bharam.index');
+Route::get('/home/bharama/create',[Bhraman_detailController::class,'create'])->name('bharam.create');
+
+
+
+
+
+
+
+

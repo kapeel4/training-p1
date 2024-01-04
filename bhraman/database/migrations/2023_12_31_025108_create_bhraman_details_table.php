@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('bhraman_details', function (Blueprint $table) {
             $table->id();
-            $table->string('fiscal_year');
-            $table->string('aadesh_no');
+            $table->integer('fiscal_year');
+            $table->string('aadesh_no'); // fk key
             $table->string('aadesh_no_np');
             $table->string('approval_date')->nullable();
             $table->string('approval_date_np')->nullable();

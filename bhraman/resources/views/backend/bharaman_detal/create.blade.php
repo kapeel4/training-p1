@@ -1,6 +1,7 @@
 @extends('layouts-backend.app')
 @push('css')
-<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet">
+<link href="https://nepalidatepicker.sajanmaharjan.com.np/nepali.datepicker/css/nepali.datepicker.v4.0.1.min.css" rel="stylesheet" type="text/css">
 @endpush
 @section('content')
 <div class="content-header">
@@ -35,37 +36,19 @@
                     <div class="card-header">
                         <h3 class="card-title">Create</h3>
                     </div>
-                    <form method="POST" action="{{route('employee.store')}}">
+                    <form method="POST" action="{{route('bharam.store')}}">
                         @csrf()
                         <div class="card-body">
                             <label for="fiscal_year">Fiscal Year</label>
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="input-group">
-                                        <input type="text" class="form-control" name="fiscal_year" placeholder="Enter Fiscal Year En">
+                                        <select class="form-control" name="fiscal_year">
+                                        @foreach($fiscals as $fiscal)
+                                            <option value="{{$fiscal->id}}">{{$fiscal->name_np}}</option>
+                                        @endforeach
+                                        </select>
                                     </div>
-
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control" name="fiscal_year_np" placeholder="Enter Fiscal Year np">
-                                    </div>
-
-                                </div>
-                            </div>
-                            <label for="approval_date">Approval Date</label>
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control" name="approval_date" placeholder="Enter Approval Date En">
-                                    </div>
-
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control" name="approval_date_np" placeholder="Enter Approval Date np">
-                                    </div>
-
                                 </div>
                             </div>
                             <label for="employee_id">Employee</label>
@@ -126,13 +109,13 @@
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="input-group">
-                                        <input type="text" class="form-control" name="visit_date_from_np" placeholder="Enter Visit Date From">
+                                        <input type="text" class="form-control" id="visit_date_from_np" name="visit_date_from_np" placeholder="Enter Visit Date From">
                                     </div>
 
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="input-group">
-                                        <input type="text" class="form-control" name="visit_date_to_np" placeholder="Enter Visit Date To">
+                                        <input type="text" class="form-control" id="visit_date_to_np" name="visit_date_to_np" placeholder="Enter Visit Date To">
                                     </div>
 
                                 </div>
@@ -167,7 +150,6 @@
 
                                 </div>
                             </div>
-                            
                         </div>
 
                         <div class="card-footer">
@@ -189,7 +171,19 @@
 </section>
 @endsection
 @push('js')
-
-
-    
-@endjs
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script src="https://nepalidatepicker.sajanmaharjan.com.np/nepali.datepicker/js/nepali.datepicker.v4.0.1.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        window.onload = function() {
+            var mainInputs = document.getElementById("visit_date_from_np");
+            mainInputs.nepaliDatePicker();
+            var mainInput = document.getElementById("visit_date_to_np");
+            mainInput.nepaliDatePicker();
+        };
+    </script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $('#employee_id').select2();
+    });
+    </script>
+@endpush

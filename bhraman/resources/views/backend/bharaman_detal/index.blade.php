@@ -31,15 +31,43 @@
                             <thead>
                                 <tr>
                                     <th style="width: 10px">#</th>
-                                    <th>Sanket No</th>
-                                    <th>Bharaman Detail name</th>
-                                    <th>Office Name</th>
-                                    <th>Contact No</th>
-                                    <th>Post</th>
-                                    <th>Type</th>
+                                    <th>Fiscal Year</th>
+                                    <th>Aadesh No</th>
+                                    <th>Employee</th>
+                                    <th>Visit Address</th>
+                                    <th>Visit Purpose</th>
+                                    <th>Date From</th>
+                                    <th>Date To</th>
+                                    <th>Peski</th>
+                                    <th>Vehicle</th>
                                     <th style="width: 150px">Action</th>
                                 </tr>
                             </thead>
+                            <tbody>
+                                @foreach($bharamandetails as $bharamandetail)
+                                <tr>
+                                    <td>{{$loop->iteration}}</td>
+                                    <td>{{$bharamandetail->getFiscal->name}}</td>
+                                    <td>{{$bharamandetail->aadesh_no}}</td>
+                                    <td>{{$bharamandetail->getEmployee->name}}</td>
+                                    <td>{{$bharamandetail->visit_address}}</td>
+                                    <td>{{$bharamandetail->visit_purpose}}</td>
+                                    <td>{{$bharamandetail->visit_date_from}}</td>
+                                    <td>{{$bharamandetail->visit_date_to}}</td>
+                                    <td>{{$bharamandetail->peski}}</td>
+                                    <td>
+                                        @if($bharamandetail->visit_vehicle ==1)
+                                            Office
+                                        @elseif($bharamandetail->visit_vehicle ==2)
+                                            Public
+                                        @else
+                                            Rental
+                                        @endif
+                                    </td>
+                                    <td><span class="badge bg-info"><a href="{{route('fiscal.edit',$bharamandetail->id)}}">Edit</a></span> <span class="badge bg-danger"><a href="{{route('fiscal.destroy',$bharamandetail->id)}}">Delete</a></span> <span class="badge bg-info"><a href="{{route('bharam.bill',$bharamandetail->id)}}">Bill</a></span></td>
+                                </tr>
+                                @endforeach
+                            </tbody>
                         </table>
                     </div>
 

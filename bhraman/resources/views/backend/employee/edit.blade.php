@@ -100,13 +100,11 @@
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="input-group">
-                                        <input type="text" class="form-control" value="{{$employees->emp_post}}" name="emp_post" placeholder="Enter Employee Post En">
-                                    </div>
-
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control" value="{{$employees->emp_post_np}}" name="emp_post_np" placeholder="Enter Employee Post np">
+                                        @foreach($designations as $designation)
+                                        <select class="form-control" name="emp_post_id">
+                                            <option value="{{$designation->id}}">{{$designation->name}}</option>
+                                        </select>
+                                        @endforeach
                                     </div>
 
                                 </div>

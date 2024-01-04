@@ -48,8 +48,16 @@
                                     <td>{{$employee->name}} | {{$employee->name_np}}</td>
                                     <td>{{$employee->office_name}} | {{$employee->office_name_np}}</td>
                                     <td>{{$employee->contact_no}} | {{$employee->contact_no_np}}</td>
-                                    <td>{{$employee->emp_post}} | {{$employee->emp_post_np}}</td>
-                                    <td>{{$employee->type}} | {{$employee->type_np}}</td>
+                                    <td>{{$employee->getDesignation->name}}</td>
+                                    <td>
+                                        @if($employee->type ==1)
+                                            Employee
+                                        @elseif($employee->type ==2)
+                                            Recommend
+                                        @else
+                                            Approve
+                                        @endif
+                                    </td>
                                     <td><span class="badge bg-info"><a href="{{route('employee.edit',$employee->id)}}">Edit</a></span> <span class="badge bg-danger"><a href="{{route('employee.destroy',$employee->id)}}">Delete</a></span></td>
                                 </tr>
                                 @endforeach

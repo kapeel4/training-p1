@@ -45,6 +45,18 @@
 								<p>Header</p>
 							</a>
 						</li>
+						<li class="nav-item">
+							<a href="{{route('designation.index')}}" class="nav-link active">
+								<i class="far fa-circle nav-icon"></i>
+								<p>Desgination</p>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a href="{{route('fiscal.index')}}" class="nav-link active">
+								<i class="far fa-circle nav-icon"></i>
+								<p>Fiscal Year</p>
+							</a>
+						</li>
 					</ul>
 				</li>
 				<li class="nav-item">

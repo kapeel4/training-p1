@@ -17,13 +17,12 @@ return new class extends Migration
             $table->string('name');
             $table->string('office_name');
             $table->string('contact_no');
-            $table->string('emp_post');
+            $table->integer('emp_post_id'); // designation sanga relation
             $table->string('type'); // 1 employee 2 recomend 3 approve
             $table->string('sanket_no_np');
             $table->string('name_np');
             $table->string('office_name_np');
             $table->string('contact_no_np');
-            $table->string('emp_post_np');
             $table->timestamps();
         });
     }
